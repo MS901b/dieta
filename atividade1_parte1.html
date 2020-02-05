@@ -1,0 +1,274 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="pt-br" lang="pt-br">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name=viewport content="width=device-width,initial-scale=1">
+
+    <link rel="stylesheet" type="text/css" href="css/estilo.css" media="screen, projection" title="normal" />
+    <link rel="alternate stylesheet" type="text/css" href="css/estilo2.css" title="grande" />
+
+
+    <link rel="stylesheet" type="text/css" href="css/popup.css" media="screen, projection" />
+    <link rel="stylesheet" type="text/css" href="css/notas.css" media="screen, projection" />
+    <link rel="stylesheet" type="text/css" href="css/bloco.css" media="screen, projection" />
+    <link rel="stylesheet" type="text/css" href="css/calculadora.css" media="screen, projection" />
+
+    <style type="text/css">
+        #questoes .questao .incorreto .select {
+            background: #FFB47F url(../img_layout/erradinho.gif) no-repeat scroll;
+        }
+        
+        #questoes .questao .correto .select {
+            background: #beff73 url(../img_layout/certinho.gif) no-repeat;
+        }
+    </style>
+
+    <!--[if IE 7]>
+			<link rel="stylesheet" type="text/css" href="css/estilo_ie7.css" media="screen, projection" />
+		<![endif]-->
+    <!--[if lte IE 6]>	
+			<link rel="stylesheet" type="text/css" href="css/estilo_ie6.css" media="screen, projection" />
+		<![endif]-->
+
+    <script type="text/javascript" src="scripts/AC_RunActiveContent.js"></script>
+    <script type="text/javascript" src="scripts/protoaculous.js"></script>
+    <script type="text/javascript" src="scripts/salvaLocal.js"></script>
+    <script type="text/javascript" src="scripts/popup.js"></script>
+    <script type="text/javascript" src="scripts/notas.js"></script>
+    <script type="text/javascript" src="scripts/bloco.js"></script>
+    <script type="text/javascript" src="scripts/calculadora.js"></script>
+    <script type="text/javascript" src="scripts/rolagem.js"></script>
+
+
+    <!-- O arquivo referencias.js e curiosidades.js devem ser incluídos depois do interface -->
+    <script type="text/javascript" src="scripts/interface.js"></script>
+    <script type="text/javascript" src="scripts/referencias.js"></script>
+    <script type="text/javascript" src="scripts/curiosidades.js"></script>
+
+    <!-- O arquivo exemplo_correcao.js que contem as funções que corrigem, deve ser incluido antes do exemplo_conteudo.js-->
+    <!-- O arquivo inputs.js deve ser incluído por último -->
+
+    <script type="text/javascript" src="scripts/atividade1_correcao.js"></script>
+    <script type="text/javascript" src="scripts/atividade1_conteudo.js"></script>
+    <script type="text/javascript" src="scripts/funcoes_gerais.js"></script>
+    <script type="text/javascript" src="scripts/inputs.js"></script>
+
+    <!-- arquivo de script para geogebra -->
+    <script src="https://www.geogebra.org/apps/deployggb.js"></script>
+
+    <script type="text/javascript">
+        var PosicaoAtual = {
+            Atividade: 1,
+            Parte: 0
+        };
+        var ProximaParte = 'atividade1_parte2.html';
+
+
+        var Popups = $H({
+            unidadesi: {
+                conteudo: 'Unidades Internacionais',
+                layout: ['seta_baixo', 'direita'],
+                largura: 11
+            },
+            pontoazul: {
+                conteudo: '<img src="imgs/pontoazul.jpg">',
+                layout: ['seta_baixo', 'direita'],
+                largura: 3
+            },
+            pontoazul2: {
+                conteudo: '<img src="imgs/pontoazul.jpg">',
+                layout: ['seta_baixo', 'direita'],
+                largura: 3
+            }
+
+        });
+
+        var PopupsDesesperados = $H({});
+
+        var Links = $H({});
+
+        var Perguntas = $H({});
+    </script>
+    <title>Como montar sua dieta</title>
+</head>
+
+<body>
+
+    <div id="container">
+        <div id="cabecalho">
+            <div id="onde_estou">
+                <div class="numero_atividade">1</div>
+                <h1>Como montar sua dieta</h1> <img src="img_layout/setinha-cabecalho.gif" alt="" />
+                <h2>A dieta</h2>
+            </div>
+            <div id="logo"></div>
+            <div id="links">
+                <a href="mapa.html">Mapa</a>
+                <a href="introducao.html">Introdução</a>
+                <a href="index.html">Início</a>
+            </div>
+
+            <div class="limpador"></div>
+        </div>
+        <!-- O controle de partes é automático, crie um vetor com as partes no javascript de conteúdo-->
+        <ul id="partes">
+        </ul>
+
+        <div id="software">
+            <div id="conteudo">
+                <div class="texto_solto">
+                    <p><strong>Problema:</strong> Um nutricionista receitou banana e abacaxi a um paciente com baixas taxas das vitaminas A e B, visando, assim, suprir uma deficiência diária de 500 <a id="unidadesi">UI</a> de vitamina A, e 0,7 mg de vitamina
+                        B. Como o paciente possui uma alimentação de 2000 Kcal ao dia, é recomendável que o consumo desses dois itens não aumente o seu consumo calórico em mais de 1000 Kcal. Em cada quilograma, a banana e o abacaxi contêm as seguintes
+                        quantidades de vitaminas A e B e de calorias:
+                    </p>
+                    <div id="dadosEntrada" style="overflow:auto; height: 150px; width: 520px;">
+                        <table border="0">
+                            <tr>
+                                <td valign="top">
+                                    <table id="tabelaDados" name="tabelaDados" class="tabela">
+                                        <THEAD>
+                                            <tr>
+                                                <th class="largura6"></th>
+                                                <th class="largura4">Banana</th>
+                                                <th class="largura4">Abacaxi</th>
+                                            </tr>
+                                            <tr>
+                                                <td class="largura3">Vitamina A (UI/kg)</td>
+                                                <td class="largura4">900</td>
+                                                <td class="largura3">260</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="largura3">Vitamina B (mg/kg)</td>
+                                                <td class="largura4">0,5</td>
+                                                <td class="largura3">0,9</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="largura3">Calorias (Kcal/kg)</td>
+                                                <td class="largura4">1000</td>
+                                                <td class="largura3">600</td>
+                                            </tr>
+                                        </THEAD>
+                                        <TBODY>
+                                        </TBODY>
+                                    </table>
+                                </td>
+
+                            </tr>
+                        </table>
+                    </div>
+
+                    <br>
+                    <p>Sabendo que 1 kg de banana custa R$2,00 e que 1 kg de abacaxi custa R$1,50, qual seria a quantidade dessas frutas que deve ser consumida para suprir a deficiência de vitaminas, e, ao mesmo tempo, gastar o mínimo possível? É essa questão
+                        que irá nortear essa atividade.</p>
+                    <p>Os valores nutricionais utilizados são baseados em valores reais, mas não devem ser utilizados para a orientação de dietas.</p>
+                    <br class="limpador" />
+                </div>
+
+                <div class="caixa instrucoes">
+                    <h2>Instruções</h2>
+                    <p>No quadro ao lado, as coordenadas x e y do <a id="pontoazul">ponto</a> no plano cartesiano representam, respectivamente, as quantidades de banana e de abacaxi consumidas;
+                    </p>
+                    <p>Movendo o <a id="pontoazul2">ponto</a>, você verá automaticamente as informações relativas a diferentes quantidades de banana e de abacaxi.
+                    </p>
+                </div>
+
+                <div id="questoes">
+
+                    <!--
+						Para o Script se localizar, essa div "texto_genérico" é necessária. Caso não tenha texto aqui, deixe ela vazia.
+						Coloque aqui qualquer texto genérico de instruções e teoria.
+						-->
+                    <div id="texto_generico">
+
+                    </div>
+
+                    <!-- Aqui vão ser colocadas as questões, via JavaScript.-->
+
+                    <div id="parte1_q1"></div>
+                    <div id="parte1_q2"></div>
+
+                    <div id="texto_generico">
+                        <p>
+                            Você gastaria bem pouco para comprar 100g de cada uma das frutas, como você viu no item “a” da Questão 1, porém suas necessidades de vitaminas não estariam satisfeitas. Será que existe alguma região do plano em que todos os pontos representem quantidades
+                            de banana e de abacaxi que satisfazem as condições da dieta?
+                        </p>
+                    </div>
+
+                    <a href="javascript:" id="corrigir_tudo">Corrigir todas as questões</a>
+                    <a id="link_continuar">
+                        <span class="escondido">Continuar</span>
+                    </a>
+                    <div class="limpador"></div>
+                </div>
+            </div>
+
+
+        </div>
+        <br class="limpador" />
+        <div id="rodape">
+            <a href="http://​m3.ime.unicamp.br" href="_blank">Sobre o Matemática Multimídia</a>
+        </div>
+    </div>
+    <div id="applet">
+        <div id="borda_applet" class="altura_applet_4 borda sem_fundo">
+            <!--
+					De acordo com a W3C as tags <applet> e <embed> estão depreciadas e não devem ser utilizadas em arquivos XHTML
+					e, no lugar, deve ser usada a tag <object>
+					
+					No caso do Java, não dá pra pôr aqui comentado em HTML pois usa comentário condicional, 
+					mas está no arquivo java_applet.html
+				-->
+            <!--<input type="ggbToolbar" botoes="0,1,5,10,23" idApplet="ggbApplet" id="ggbToolbar1"/>-->
+
+            <div id="ggbApplet"></div>
+            <script>
+                var ggbApp = new GGBApplet({
+                    "appName": "classic",
+                    "width": 519,
+                    "height": 380,
+                    "filename": "applets/pl-2.ggb",
+                    "showResetIcon": false,
+                    "enableRightClick": false,
+                    "showMenuBar": false,
+                    "showToolBar": false,
+                    "showToolBarHelp": false,
+                    "showAlgebraInput": false,
+                    "enableShiftDragZoom": false,
+                    "enableLabelDrags": false,
+                    "useBrowserForJS": true
+                }, true);
+                window.addEventListener("load", function() {
+                    ggbApp.inject('ggbApplet');
+                });
+            </script>
+
+            <div class="canto sup_esq"></div>
+            <div class="canto sup_dir"></div>
+            <div class="canto inf_esq"></div>
+            <div class="canto inf_dir"></div>
+            <div id="associacao"></div>
+        </div>
+        <div id="comandos">
+
+        </div>
+    </div>
+
+    <div id="associado"></div>
+
+
+    <div id="ferramentas">
+        <a href="javascript:;" onclick="return false;" id="link_notas"><span class="escondido">referencias</span></a>
+        <a href="javascript:;" onclick="return false;" id="link_bloco"><span class="escondido">bloco de notas</span></a>
+        <!--
+        <a href="javascript:;" id="link_calculadora" onclick="javascript:calculadora();"><span class="escondido">calculadora</span></a>
+		<a href="javascript:setActiveStyleSheet('grande');" id="link_acessibilidade"><span class="escondido">acessibilidade</span></a>
+		-->
+    </div>
+    <div id="calc" class="escondido"></div>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,845 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="pt-br" lang="pt-br">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name=viewport content="width=device-width,initial-scale=1">
+
+    <link rel="stylesheet" type="text/css" href="css/estilo.css" media="screen, projection" title="normal" />
+    <link rel="alternate stylesheet" type="text/css" href="css/estilo2.css" title="grande" />
+
+
+    <link rel="stylesheet" type="text/css" href="css/popup.css" media="screen, projection" />
+    <link rel="stylesheet" type="text/css" href="css/notas.css" media="screen, projection" />
+    <link rel="stylesheet" type="text/css" href="css/bloco.css" media="screen, projection" />
+    <link rel="stylesheet" type="text/css" href="css/calculadora.css" media="screen, projection" />
+
+    <style type="text/css">
+        #questoes .questao .incorreto .select {
+            background: #FFB47F url(../img_layout/erradinho.gif) no-repeat scroll;
+        }
+        
+        #questoes .questao .correto .select {
+            background: #beff73 url(../img_layout/certinho.gif) no-repeat;
+        }
+    </style>
+
+    <!--[if IE 7]>
+			<link rel="stylesheet" type="text/css" href="css/estilo_ie7.css" media="screen, projection" />
+		<![endif]-->
+    <!--[if lte IE 6]>	
+			<link rel="stylesheet" type="text/css" href="css/estilo_ie6.css" media="screen, projection" />
+		<![endif]-->
+
+    <script type="text/javascript" src="scripts/AC_RunActiveContent.js"></script>
+    <script type="text/javascript" src="scripts/protoaculous.js"></script>
+    <script type="text/javascript" src="scripts/salvaLocal.js"></script>
+    <script type="text/javascript" src="scripts/popup.js"></script>
+    <script type="text/javascript" src="scripts/notas.js"></script>
+    <script type="text/javascript" src="scripts/bloco.js"></script>
+    <script type="text/javascript" src="scripts/calculadora.js"></script>
+    <script type="text/javascript" src="scripts/rolagem.js"></script>
+
+    <!-- arquivo de script para geogebra -->
+    <script src="https://www.geogebra.org/apps/deployggb.js"></script>
+
+
+    <!-- O arquivo referencias.js e curiosidades.js devem ser incluídos depois do interface -->
+    <script type="text/javascript" src="scripts/interface.js"></script>
+    <script type="text/javascript" src="scripts/referencias.js"></script>
+    <script type="text/javascript" src="scripts/curiosidades.js"></script>
+
+    <!-- O arquivo exemplo_correcao.js que contem as funções que corrigem, deve ser incluido antes do exemplo_conteudo.js-->
+    <!-- O arquivo inputs.js deve ser incluído por último -->
+
+    <style type="text/css">
+        <!-- .tabelamanual {
+            border: 0px solid;
+        }
+        
+        .tabelamanual .primeira_linha {
+            border-bottom: 1px solid #000000;
+        }
+        
+        -->
+    </style>
+
+    <script type="text/javascript" src="scripts/atividade1_correcao.js"></script>
+    <script type="text/javascript" src="scripts/atividade1_conteudo.js"></script>
+    <script type="text/javascript" src="scripts/funcoes_gerais.js"></script>
+    <script type="text/javascript" src="scripts/inputs.js"></script>
+    <script type="text/javascript">
+        var nomeSoft = 'proglinear';
+
+        var PosicaoAtual = {
+            Atividade: 1,
+            Parte: 2
+        };
+        var ProximaParte = 'atividade1_parte4.html';
+
+
+        /*
+        	
+        	Popups, Links e Perguntas:
+        	
+        	Sempre devem ser usados em links <a> com um ID definido ("link_continuar" ou "paus", nesse exemplo, ou ainda "pede" e "pede2");
+        	Veja que não é necessário criar o parâmetro href, nem onclick, ou onmouseover, nada!
+        	Ambos criam um popup que abre com click, porem os listados em Link são tratados pondo cor azul e sublinhado tracejado automaticamente;
+        	Para itens que não precisam de sublinhar (como img_layout, por exemplo) é melhor usar a lista Popup;
+        	Para itens que precisam de uma interação com o usuário, use as Perguntas;
+        	
+        */
+
+        var Popups = $H({});
+
+        var PopupsDesesperados = $H({});
+
+        var Links = $H({});
+
+        var Perguntas = $H({});
+    </script>
+    <title>Como montar sua dieta</title>
+</head>
+
+<body>
+
+    <div id="container">
+        <div id="cabecalho">
+            <div id="onde_estou">
+                <div class="numero_atividade">1</div>
+                <h1>Como montar sua dieta</h1> <img src="img_layout/setinha-cabecalho.gif" alt="" />
+                <h2>A dieta</h2>
+            </div>
+            <div id="logo"></div>
+            <div id="links">
+                <a href="mapa.html">Mapa</a>
+                <a href="introducao.html">Introdução</a>
+                <a href="index.html">Início</a>
+            </div>
+
+            <div class="limpador"></div>
+        </div>
+        <!-- O controle de partes é automático, crie um vetor com as partes no javascript de conteúdo-->
+        <ul id="partes">
+        </ul>
+
+        <div id="software">
+            <div id="conteudo">
+                <div class="texto_solto">
+                    <p>Para encontrar o ponto que indica a dieta mais barata, o primeiro passo é identificar quais são os vértices do polígono obtido na parte anterior.
+                    </p>
+                    <p>Veja que o vértice V<sub>1</sub> é dado pela intersecção de duas retas. Para encontrá-lo, basta achar essa intersecção entre elas, ou seja, a solução de um sistema linear 2x2 formado pelas equações de cada uma das retas.
+                    </p>
+                    <br class="limpador" />
+                </div>
+
+                <div class="caixa instrucoes">
+                    <h2>Instruções</h2>
+                    <p>Ao selecionar uma equação, a reta que representada por ela ficará destacada;</p>
+                </div>
+
+                <div id="questoes">
+
+                    <div id="parte3_q6"></div>
+
+                    <a href="javascript:" id="corrigir_tudo">Corrigir todas as questões</a>
+                    <a id="link_continuar">
+                        <span class="escondido">Continuar</span>
+                    </a>
+                    <div class="limpador"></div>
+                </div>
+            </div>
+        </div>
+        <br class="limpador" />
+        <div id="rodape">
+            <a href="http://​m3.ime.unicamp.br​" href="_blank">Sobre o Matemática Multimídia</a>
+        </div>
+    </div>
+    <div id="applet">
+        <div id="borda_applet" class="altura_applet_4 borda sem_fundo">
+            <!--
+					De acordo com a W3C as tags <applet> e <embed> estão depreciadas e não devem ser utilizadas em arquivos XHTML
+					e, no lugar, deve ser usada a tag <object>
+					
+					No caso do Java, não dá pra pôr aqui comentado em HTML pois usa comentário condicional, 
+					mas está no arquivo java_applet.html
+				-->
+            <!--<input type="ggbToolbar" botoes="0,1,5,10,23" idApplet="ggbApplet" id="ggbToolbar1"/>-->
+            <div id="ggbApplet"></div>
+            <script>
+                var ggbApp = new GGBApplet({
+                    "appName": "classic",
+                    "width": 519,
+                    "height": 380,
+                    "filename": "applets/pl-2.ggb",
+                    "showResetIcon": false,
+                    "enableRightClick": false,
+                    "showMenuBar": false,
+                    "showToolBar": false,
+                    "showToolBarHelp": false,
+                    "showAlgebraInput": false,
+                    "enableShiftDragZoom": false,
+                    "enableLabelDrags": false,
+                    "useBrowserForJS": true
+                }, true);
+                window.addEventListener("load", function() {
+                    ggbApp.inject('ggbApplet');
+                });
+            </script>
+
+            <div class="canto sup_esq"></div>
+            <div class="canto sup_dir"></div>
+            <div class="canto inf_esq"></div>
+            <div class="canto inf_dir"></div>
+            <div id="associacao"></div>
+        </div>
+        <div id="comandos">
+
+        </div>
+    </div>
+
+
+
+    <div id="associado"></div>
+
+
+    <div id="ferramentas">
+        <a href="javascript:;" onclick="return false;" id="link_notas"><span class="escondido">referencias</span></a>
+        <a href="javascript:;" onclick="return false;" id="link_bloco"><span class="escondido">bloco de notas</span></a>
+        <!--
+        <a href="javascript:;" id="link_calculadora" onclick="javascript:calculadora();"><span class="escondido">calculadora</span></a>
+        <a href="javascript:setActiveStyleSheet('grande');" id="link_acessibilidade"><span class="escondido">acessibilidade</span></a>
+		-->
+    </div>
+    <div id="calc" class="escondido"></div>
+
+
+    <!-- divs pra drag and drop 
+			  reparem que o id aqui declarado deve ser o mesmo setado na parte de conteúdo
+			  também é necessário um função de correção específica, declarada nesta parte,
+			  a função declarada no conteúdo, deve ser criada no script de correção e simplesmente
+			  chamar esta oura função aqui
+		-->
+
+
+
+    <div id="drag-v1" class="escondido">
+
+        <div id="q1_adispensa" class="a_esquerda deposito" style="margin-left: 30px; width: 290px; height: 90px; margin-top: 0px; position: relative;">
+            <div class="titulo">Arraste os valores:</div>
+            <br class="limpador" />
+            <!--<div id="q1_aresp01" class="caixa_pequena resp" style="width:190px;">a = 500/260 - 900b/260</div>-->
+            <div id="q1_aresp01" class="caixa_pequena resp" style="width:120px; height:20px;">a = 1,92 - 3,46b</div>
+            <div id="q1_aresp02" class="caixa_pequena resp" style="width:120px; height:20px;">a = 0,77 - 0,55b</div>
+            <div id="q1_aresp03" class="caixa_pequena resp" style="width:120px; height:20px;">a = 1,67 - 1,67b</div>
+        </div>
+        <br class="limpador" />
+        <br class="limpador" />
+
+        <div class="a_esquerda" style="margin-top:-22px; margin-left: 30px; margin-right:10px; width:30px; height:120px; background: url(imgs/abre_chave.gif);"></div>
+        <div class="a_esquerda">
+            <div class="a_esquerda">
+                <div></div>
+                <div class="recipiente" style="margin-top:7px; margin-right: 10px; margin-bottom:10px; width:130px; height:25px;" id="q1_adock01"></div>
+            </div>
+            <br class="limpador" />
+            <div class="a_esquerda">
+                <div></div>
+                <div class="recipiente" style="margin-right: 10px; margin-bottom:10px; width:130px; height:25px;" id="q1_adock02"></div>
+            </div>
+        </div>
+
+
+        <script type="text/javascript">
+            var applet = document.ggbApplet;
+            var q1_aresposta = $H({
+                q1_adock01: null,
+                q1_adock02: null
+            });
+            var q1_agabarito = $H({
+                q1_adock01: 'a = 1,92 - 3,46b',
+                q1_adock02: 'a = 1,67 - 1,67b'
+            });
+            var q1_agabarito2 = $H({
+                q1_adock01: 'a = 1,67 - 1,67b',
+                q1_adock02: 'a = 1,92 - 3,46b'
+            });
+
+            var q1_ade_onde = null;
+            var q1_trocando = false;
+
+            $w('q1_aresp01 q1_aresp02 q1_aresp03').each(function(el) {
+                new Draggable(el, {
+                    revert: true,
+                    onStart: function() {
+                        q1_ade_onde = $(el).up().id;
+                        q1_trocando = false;
+
+                        if (el.toString() == 'q1_aresp01') {
+                            applet.setLineThickness('f', 5);
+                        }
+
+                        if (el.toString() == 'q1_aresp02') {
+                            applet.setLineThickness('g', 5);
+                        }
+
+                        if (el.toString() == 'q1_aresp03') {
+                            applet.setLineThickness('i', 5);
+                        }
+                    },
+                    onEnd: function() {
+                        if (!q1_trocando)
+                            q1_aresposta.set(q1_ade_onde, '');
+                        $(q1_ade_onde).removeClassName('errado');
+                        $(q1_ade_onde).removeClassName('q1_correto');
+                        $(q1_ade_onde).removeClassName('nao_preenchido');
+
+                        if (el.toString() == 'q1_aresp01') {
+                            applet.setLineThickness('f', 2);
+                        }
+
+                        if (el.toString() == 'q1_aresp02') {
+                            applet.setLineThickness('g', 2);
+                        }
+
+                        if (el.toString() == 'q1_aresp03') {
+                            applet.setLineThickness('i', 2);
+                        }
+                    }
+                });
+
+                $(el).setStyle({
+                    cursor: 'move'
+                });
+            });
+            $w('q1_adock01 q1_adock02 q1_adispensa').each(function(el) {
+                Droppables.add(el, {
+                    accept: 'resp',
+                    onDrop: function(resp, qk, ev) {
+
+
+                        if (Element.empty(qk) && resp.up().id != 'q1_adispensa')
+                            q1_aresposta.set(resp.up().id, null);
+
+
+                        if (Element.empty(qk) || qk.id == 'q1_adispensa') {
+                            $(qk).appendChild(resp);
+                        } else {
+
+                            if (qk.id != 'q1_adispensa') {
+
+                                recipiente = resp.parentNode.id;
+                                a = qk.down();
+
+                                q1_aresposta.set(resp.up().id, null);
+                                q1_aresposta.set(resp.parentNode.id, null);
+
+                                $(qk).appendChild(resp);
+                                $(recipiente).appendChild(a);
+
+                                q1_aresposta.set(recipiente, a.innerHTML)
+                                a.setStyle({
+                                    backgroundColor: 'white'
+                                });
+
+                                q1_trocando = true;
+                            }
+                        }
+
+                        if (qk.id != 'q1_adispensa') {
+                            largura = $(qk.id).getWidth();
+                            $(resp).setStyle({
+                                top: 0,
+                                left: 0,
+                                position: 'absolute',
+                                width: (largura - 12) + 'px',
+                                backgroundColor: 'white'
+                            });
+
+                        } else {
+                            $(resp).setStyle({
+                                top: 0,
+                                left: 0,
+                                position: 'relative',
+                                backgroundColor: 'white',
+                                width: '120px'
+                            });
+                        }
+
+
+                        if (q1_trocando) {
+                            if (recipiente == 'q1_adispensa') {
+                                $(a).setStyle({
+                                    top: 0,
+                                    left: 0,
+                                    position: 'relative',
+                                    backgroundColor: 'white',
+                                    width: '120px'
+                                });
+                            }
+                        }
+
+                        qk.setStyle({
+                            background: 'none'
+                        });
+
+                        if (qk.id != 'q1_adispensa')
+                            q1_aresposta.set(qk.id, resp.innerHTML);
+
+                    }
+                });
+
+            });
+
+            function corrige_drag_q_6_a() {
+                if (!corrigindo) {
+                    var q1_correto = true;
+                    var q1_keys = q1_agabarito.keys();
+                    for (a = 0; a < q1_keys.length; a++) {
+                        $(q1_keys[a]).removeClassName('errado');
+                        $(q1_keys[a]).removeClassName('correto');
+                        $(q1_keys[a]).removeClassName('nao_preenchido');
+
+                        if (q1_agabarito.get(q1_keys[a]) != q1_aresposta.get(q1_keys[a]) && q1_agabarito2.get(q1_keys[a]) != q1_aresposta.get(q1_keys[a])) {
+
+
+                            q1_correto = false;
+                            var q1_filho = $(q1_keys[a]).firstDescendant();
+                            if (q1_filho) {
+                                $(q1_keys[a]).addClassName('errado');
+                                q1_filho.setStyle({
+                                    backgroundColor: 'transparent'
+                                });
+                            } else
+                                $(q1_keys[a]).addClassName('nao_preenchido');
+                        } else {
+                            $(q1_keys[a]).addClassName('correto');
+                            var q1_filho = $(q1_keys[a]).firstDescendant();
+                            q1_filho.setStyle({
+                                backgroundColor: 'transparent'
+                            });
+                        }
+                    }
+                    setResp('aaaa', 2);
+                    return [q1_correto];
+                } else
+                    return null;
+            }
+        </script>
+
+    </div>
+
+    <div id="drag-v2" class="escondido">
+
+        <div id="adispensa" class="a_esquerda deposito" style="margin-left: 30px; width: 290px; height: 90px; margin-top: 0px; position: relative;">
+            <div class="titulo">Arraste os valores:</div>
+            <br class="limpador" />
+            <!--<div id="aresp01" class="caixa_pequena resp" style="width:190px;">a = 500/260 - 900b/260</div>-->
+            <div id="aresp01" class="caixa_pequena resp" style="width:120px; height:20px;">a = 1,92 - 3,46b</div>
+            <div id="aresp02" class="caixa_pequena resp" style="width:120px; height:20px;">a = 0,77 - 0,55b</div>
+            <div id="aresp03" class="caixa_pequena resp" style="width:120px; height:20px;">a = 1,67 - 1,67b</div>
+        </div>
+        <br class="limpador" />
+        <br class="limpador" />
+
+        <div class="a_esquerda" style="margin-top:-22px; margin-left: 30px; margin-right:10px; width:30px; height:120px; background: url(imgs/abre_chave.gif);"></div>
+        <div class="a_esquerda">
+            <div class="a_esquerda">
+                <div></div>
+                <div class="recipiente" style="margin-top:7px; margin-right: 10px; margin-bottom:10px; width:130px; height:25px;" id="adock01"></div>
+            </div>
+            <br class="limpador" />
+            <div class="a_esquerda">
+                <div></div>
+                <div class="recipiente" style="margin-right: 10px; margin-bottom:10px; width:130px; height:25px;" id="adock02"></div>
+            </div>
+        </div>
+
+        <script type="text/javascript">
+            var applet = document.ggbApplet;
+            var aresposta = $H({
+                adock01: null,
+                adock02: null
+            });
+            var agabarito = $H({
+                adock01: 'a = 1,92 - 3,46b',
+                adock02: 'a = 0,77 - 0,55b'
+            });
+            var agabarito2 = $H({
+                adock01: 'a = 0,77 - 0,55b',
+                adock02: 'a = 1,92 - 3,46b'
+            });
+
+            var ade_onde = null;
+            var trocando = false;
+
+            $w('aresp01 aresp02 aresp03').each(function(el) {
+                new Draggable(el, {
+                    revert: true,
+                    onStart: function() {
+                        ade_onde = $(el).up().id;
+                        trocando = false;
+
+                        if (el.toString() == 'aresp01') {
+                            applet.setLineThickness('f', 5);
+                        }
+
+                        if (el.toString() == 'aresp02') {
+                            applet.setLineThickness('g', 5);
+                        }
+
+                        if (el.toString() == 'aresp03') {
+                            applet.setLineThickness('i', 5);
+                        }
+                    },
+                    onEnd: function() {
+                        if (!trocando)
+                            aresposta.set(ade_onde, '');
+                        $(ade_onde).removeClassName('errado');
+                        $(ade_onde).removeClassName('correto');
+                        $(ade_onde).removeClassName('nao_preenchido');
+
+                        if (el.toString() == 'aresp01') {
+                            applet.setLineThickness('f', 2);
+                        }
+
+                        if (el.toString() == 'aresp02') {
+                            applet.setLineThickness('g', 2);
+                        }
+
+                        if (el.toString() == 'aresp03') {
+                            applet.setLineThickness('i', 2);
+                        }
+                    }
+                });
+
+                $(el).setStyle({
+                    cursor: 'move'
+                });
+            });
+            $w('adock01 adock02 adispensa').each(function(el) {
+                Droppables.add(el, {
+                    accept: 'resp',
+                    onDrop: function(resp, qk, ev) {
+
+
+                        if (Element.empty(qk) && resp.up().id != 'adispensa')
+                            aresposta.set(resp.up().id, null);
+
+
+                        if (Element.empty(qk) || qk.id == 'adispensa') {
+                            $(qk).appendChild(resp);
+                        } else {
+
+                            if (qk.id != 'adispensa') {
+
+                                recipiente = resp.parentNode.id;
+                                a = qk.down();
+
+                                aresposta.set(resp.up().id, null);
+                                aresposta.set(resp.parentNode.id, null);
+
+                                $(qk).appendChild(resp);
+                                $(recipiente).appendChild(a);
+
+                                aresposta.set(recipiente, a.innerHTML)
+                                a.setStyle({
+                                    backgroundColor: 'white'
+                                });
+
+                                trocando = true;
+                            }
+                        }
+
+                        if (qk.id != 'adispensa') {
+                            largura = $(qk.id).getWidth();
+                            $(resp).setStyle({
+                                top: 0,
+                                left: 0,
+                                position: 'absolute',
+                                width: (largura - 12) + 'px',
+                                backgroundColor: 'white'
+                            });
+
+                        } else {
+                            $(resp).setStyle({
+                                top: 0,
+                                left: 0,
+                                position: 'relative',
+                                backgroundColor: 'white',
+                                width: '120px'
+                            });
+                        }
+
+
+                        if (trocando) {
+                            if (recipiente == 'adispensa') {
+                                $(a).setStyle({
+                                    top: 0,
+                                    left: 0,
+                                    position: 'relative',
+                                    backgroundColor: 'white',
+                                    width: '120px'
+                                });
+                            }
+                        }
+
+                        qk.setStyle({
+                            background: 'none'
+                        });
+
+                        if (qk.id != 'adispensa')
+                            aresposta.set(qk.id, resp.innerHTML);
+
+                    }
+                });
+
+            });
+
+            function corrige_drag_q_6_b() {
+                if (!corrigindo) {
+                    var correto = true;
+                    var keys = agabarito.keys();
+                    for (a = 0; a < keys.length; a++) {
+                        $(keys[a]).removeClassName('errado');
+                        $(keys[a]).removeClassName('correto');
+                        $(keys[a]).removeClassName('nao_preenchido');
+
+                        if (agabarito.get(keys[a]) != aresposta.get(keys[a]) && agabarito2.get(keys[a]) != aresposta.get(keys[a])) {
+                            correto = false;
+                            var filho = $(keys[a]).firstDescendant();
+                            if (filho) {
+                                $(keys[a]).addClassName('errado');
+                                filho.setStyle({
+                                    backgroundColor: 'transparent'
+                                });
+                            } else
+                                $(keys[a]).addClassName('nao_preenchido');
+
+                        } else {
+                            $(keys[a]).addClassName('correto');
+                            var filho = $(keys[a]).firstDescendant();
+                            filho.setStyle({
+                                backgroundColor: 'transparent'
+                            });
+                        }
+                    }
+                    return [correto];
+                } else
+                    return null;
+            }
+        </script>
+
+    </div>
+
+    <div id="drag-v3" class="escondido">
+
+        <div id="q3_adispensa" class="a_esquerda deposito" style="margin-left: 30px; width: 290px; height: 90px; margin-top: 0px; position: relative;">
+            <div class="titulo">Arraste os valores:</div>
+            <br class="limpador" />
+            <!--<div id="q3_aresp01" class="caixa_pequena resp" style="width:190px;">a = 500/260 - 900b/260</div>-->
+            <div id="q3_aresp01" class="caixa_pequena resp" style="width:120px; height:20px;">a = 1,92 - 3,46b</div>
+            <div id="q3_aresp02" class="caixa_pequena resp" style="width:120px; height:20px;">a = 0,77 - 0,55b</div>
+            <div id="q3_aresp03" class="caixa_pequena resp" style="width:120px; height:20px;">a = 1,67 - 1,67b</div>
+        </div>
+        <br class="limpador" />
+        <br class="limpador" />
+
+        <div class="a_esquerda" style="margin-top:-22px; margin-left: 30px; margin-right:10px; width:30px; height:120px; background: url(imgs/abre_chave.gif);"></div>
+        <div class="a_esquerda">
+            <div class="a_esquerda">
+                <div></div>
+                <div class="recipiente" style="margin-top:7px; margin-right: 10px; margin-bottom:10px; width:130px; height:25px;" id="q3_adock01"></div>
+            </div>
+            <br class="limpador" />
+            <div class="a_esquerda">
+                <div></div>
+                <div class="recipiente" style="margin-right: 10px; margin-bottom:10px; width:130px; height:25px;" id="q3_adock02"></div>
+            </div>
+        </div>
+
+        <script type="text/javascript">
+            var q3_aresposta = $H({
+                q3_adock01: null,
+                q3_adock02: null
+            });
+            var q3_agabarito = $H({
+                q3_adock01: 'a = 0,77 - 0,55b',
+                q3_adock02: 'a = 1,67 - 1,67b'
+            });
+            var q3_agabarito2 = $H({
+                q3_adock01: 'a = 1,67 - 1,67b',
+                q3_adock02: 'a = 0,77 - 0,55b'
+            });
+
+            var q3_ade_onde = null;
+            var q3_trocando = false;
+
+            $w('q3_aresp01 q3_aresp02 q3_aresp03').each(function(el) {
+                new Draggable(el, {
+                    revert: true,
+                    onStart: function() {
+                        q3_ade_onde = $(el).up().id;
+                        q3_trocando = false;
+
+                        if (el.toString() == 'q3_aresp01') {
+                            applet.setLineThickness('f', 5);
+                        }
+
+                        if (el.toString() == 'q3_aresp02') {
+                            applet.setLineThickness('g', 5);
+                        }
+
+                        if (el.toString() == 'q3_aresp03') {
+                            applet.setLineThickness('i', 5);
+                        }
+                    },
+                    onEnd: function() {
+                        if (!q3_trocando)
+                            q3_aresposta.set(q3_ade_onde, '');
+                        $(q3_ade_onde).removeClassName('errado');
+                        $(q3_ade_onde).removeClassName('q3_correto');
+                        $(q3_ade_onde).removeClassName('nao_preenchido');
+
+                        if (el.toString() == 'q3_aresp01') {
+                            applet.setLineThickness('f', 2);
+                        }
+
+                        if (el.toString() == 'q3_aresp02') {
+                            applet.setLineThickness('g', 2);
+                        }
+
+                        if (el.toString() == 'q3_aresp03') {
+                            applet.setLineThickness('i', 2);
+                        }
+                    }
+                });
+
+                $(el).setStyle({
+                    cursor: 'move'
+                });
+            });
+            $w('q3_adock01 q3_adock02 q3_adispensa').each(function(el) {
+                Droppables.add(el, {
+                    accept: 'resp',
+                    onDrop: function(resp, qk, ev) {
+
+
+                        if (Element.empty(qk) && resp.up().id != 'q3_adispensa')
+                            q3_aresposta.set(resp.up().id, null);
+
+
+                        if (Element.empty(qk) || qk.id == 'q3_adispensa') {
+                            $(qk).appendChild(resp);
+                        } else {
+
+                            if (qk.id != 'q3_adispensa') {
+
+                                recipiente = resp.parentNode.id;
+                                a = qk.down();
+
+                                q3_aresposta.set(resp.up().id, null);
+                                q3_aresposta.set(resp.parentNode.id, null);
+
+                                $(qk).appendChild(resp);
+                                $(recipiente).appendChild(a);
+
+                                q3_aresposta.set(recipiente, a.innerHTML)
+                                a.setStyle({
+                                    backgroundColor: 'white'
+                                });
+
+                                q3_trocando = true;
+                            }
+                        }
+
+                        if (qk.id != 'q3_adispensa') {
+                            largura = $(qk.id).getWidth();
+                            $(resp).setStyle({
+                                top: 0,
+                                left: 0,
+                                position: 'absolute',
+                                width: (largura - 12) + 'px',
+                                backgroundColor: 'white'
+                            });
+
+                        } else {
+                            $(resp).setStyle({
+                                top: 0,
+                                left: 0,
+                                position: 'relative',
+                                backgroundColor: 'white',
+                                width: '120px'
+                            });
+                        }
+
+
+                        if (q3_trocando) {
+                            if (recipiente == 'q3_adispensa') {
+                                $(a).setStyle({
+                                    top: 0,
+                                    left: 0,
+                                    position: 'relative',
+                                    backgroundColor: 'white',
+                                    width: '120px'
+                                });
+                            }
+                        }
+
+                        qk.setStyle({
+                            background: 'none'
+                        });
+
+                        if (qk.id != 'q3_adispensa')
+                            q3_aresposta.set(qk.id, resp.innerHTML);
+
+                    }
+                });
+
+            });
+
+            function corrige_drag_q_6_c() {
+                if (!corrigindo) {
+                    var q3_correto = true;
+                    var q3_keys = q3_agabarito.keys();
+
+
+                    for (a = 0; a < q3_keys.length; a++) {
+                        $(q3_keys[a]).removeClassName('errado');
+                        $(q3_keys[a]).removeClassName('correto');
+                        $(q3_keys[a]).removeClassName('nao_preenchido');
+
+                        if (q3_agabarito.get(q3_keys[a]) != q3_aresposta.get(q3_keys[a]) && q3_agabarito2.get(q3_keys[a]) != q3_aresposta.get(q3_keys[a])) {
+                            q3_correto = false;
+                            var q3_filho = $(q3_keys[a]).firstDescendant();
+                            if (q3_filho) {
+                                $(q3_keys[a]).addClassName('errado');
+                                q3_filho.setStyle({
+                                    backgroundColor: 'transparent'
+                                });
+                            } else
+                                $(q3_keys[a]).addClassName('nao_preenchido');
+
+                        } else {
+                            $(q3_keys[a]).addClassName('correto');
+                            var q3_filho = $(q3_keys[a]).firstDescendant();
+                            q3_filho.setStyle({
+                                backgroundColor: 'transparent'
+                            });
+                        }
+                    }
+                    return [q3_correto];
+                } else
+                    return null;
+            }
+        </script>
+
+    </div>
+
+
+    </div>
+
+</body>
+
+</html>

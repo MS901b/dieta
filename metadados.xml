@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<recurso>
+    <titulo>Como montar sua dieta</titulo>
+    <descricao>Neste software aprenderemos a resolver alguns problemas de programação linear. Trata-se de problemas bastante úteis em diversas aplicações práticas, pois permitem determinar o valor máximo ou mínimo de funções que modelam problemas reais, por exemplo, o cálculo do menor custo possível para determinada dieta.</descricao>
+    <estado>finalizado</estado>
+    <imagem>logo.jpg</imagem>
+    <tipo>software educacional</tipo>
+    <objetivos>Entender o que é um problema de programação linear e como resolvê-lo através da inspeção de seus vértices; Aprender como escrever restrições lineares utilizando desigualdades; Identiﬁcar graﬁcamente a solução de um problema de programação linear; Conhecer uma aplicação prática para os conceitos de função, equação e inequação aﬁns.</objetivos>
+    <observacoes>É necessário plugin Flash 9.0 ou mais recente e máquina Java 1.6 ou mais recente.</observacoes>
+    <nivel>Ensino Médio</nivel>
+    <componente>Matemática</componente>
+    <temas>Números e Funções</temas>
+    <autores>Leonardo Barichello, Cristiano Torezzan e Sueli R. Costa</autores>
+    <palavras_chaves>Unicamp, Projeto M³, software educacional, matemática, </palavras_chaves>
+    <assunto>Função aﬁm: aplicações, gráﬁcos e custos; Inequações; Interpretação geométrica de equações e inequações; Problemas de otimização.</assunto>
+</recurso>
+
+
+
+
+
+

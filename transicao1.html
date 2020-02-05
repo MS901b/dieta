@@ -1,0 +1,201 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="pt-br" lang="pt-br">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" type="text/css" href="css/curiosidade_transicao.css" media="screen, projection" title="normal" />
+    <link rel="alternate stylesheet" type="text/css" href="css/curiosidade_transicao2.css" media="screen, projection" title="grande" />
+
+    <link rel="stylesheet" type="text/css" href="css/popup.css" media="screen, projection" />
+    <link rel="stylesheet" type="text/css" href="css/notas.css" media="screen, projection" />
+    <link rel="stylesheet" type="text/css" href="css/bloco.css" media="screen, projection" />
+    <link rel="stylesheet" type="text/css" href="css/calculadora.css" media="screen, projection" />
+
+
+    <script type="text/javascript" src="scripts/protoaculous.js"></script>
+    <script type="text/javascript" src="scripts/salvaLocal.js"></script>
+    <script type="text/javascript" src="scripts/AC_RunActiveContent.js"></script>
+    <script type="text/javascript" src="scripts/popup.js"></script>
+    <script type="text/javascript" src="scripts/notas.js"></script>
+    <script type="text/javascript" src="scripts/bloco.js"></script>
+    <script type="text/javascript" src="scripts/calculadora.js"></script>
+    <script type="text/javascript" src="scripts/interface.js"></script>
+    <script type="text/javascript" src="scripts/referencias.js"></script>
+    <script type="text/javascript" src="scripts/curiosidades.js"></script>
+
+    <script type="text/javascript" src="scripts/funcoes_gerais.js"></script>
+
+    <script type="text/javascript">
+        var PosicaoAtual = {
+            Atividade: 0,
+            Parte: 0
+        };
+        var Partes = null;
+        var nomeSoft = 'proglinear';
+        var Questoes = null;
+        var BlocoNotas, MeuBloco;
+
+
+        //Event.observe(document, 'flash:SalvaLocal', function(ev) {
+        setResp('transicao_1', 2);
+        //});
+
+        Event.observe(window, 'load', function() {
+
+            var status2 = getResp('atividade_2');
+            BlocoNotas = new Blocao();
+            MeuBloco = new Array();
+
+
+
+            if (status2 == "3") {
+                $('atividade2').addClassName('ja_feita');
+                $('atividade2').removeClassName('aberta');
+                $('atividade2').removeClassName('comecada');
+
+                var concluida = new Element('div', {
+                    className: 'concluida'
+                }).insert('Atividade já concluída.');
+                $('pai_atividade2').insert(concluida);
+            } else if (status2 == "2") {
+                $('atividade2').addClassName('comecada');
+                $('atividade2').removeClassName('aberta');
+                $('atividade2').removeClassName('ja_feita');
+
+                var concluida = new Element('div', {
+                    className: 'concluida'
+                }).insert('Atividade já iniciada.');
+                $('pai_atividade2').insert(concluida);
+            }
+
+            var status3 = getResp('atividade_3');
+            if (status3 == "3") {
+                $('atividade3').addClassName('ja_feita');
+                $('atividade3').removeClassName('aberta');
+                $('atividade3').removeClassName('comecada');
+
+                var concluida = new Element('div', {
+                    className: 'concluida'
+                }).insert('Atividade já concluída.');
+                $('pai_atividade3').insert(concluida);
+            } else if (status3 == "2") {
+                $('atividade3').addClassName('comecada');
+                $('atividade3').removeClassName('aberta');
+                $('atividade3').removeClassName('ja_feita');
+
+                var concluida = new Element('div', {
+                    className: 'concluida'
+                }).insert('Atividade já iniciada.');
+                $('pai_atividade3').insert(concluida);
+            }
+        });
+    </script>
+
+    <title>Como montar sua dieta</title>
+</head>
+
+<body>
+    <div id="container">
+        <div id="cabecalho">
+            <div id="onde_estou">
+                <div class="transicao">&nbsp;</div>
+                <h1>Como montar sua dieta</h1>
+            </div>
+            <div id="logo"></div>
+            <div id="links">
+                <a href="mapa.html">Mapa</a>
+                <a href="introducao.html">Introdução</a>
+                <a href="index.html">Início</a>
+            </div>
+            <br class="limpador" />
+        </div>
+
+        <!-- deve ficar vazio mesmo, é só pra se adptar ao layout e não precisar de outro css -->
+        <ul id="curiosidades"></ul>
+
+        <div id="principal">
+            <div id="conteudo">
+                <div class="texto">
+                    <p>Na Atividade 1, você viu que tanto o máximo como o mínimo do problema analisado ocorreram nos vértices da região de interesse.
+                    </p>
+                    <p>Esse é o resultado fundamental de uma área da Matemática chamada <strong>"Programação Linear"</strong>. Ela permite encontrar resultados ótimos para certas funções olhando apenas para o valor que a função assume nos vértices da região
+                        de interesse.
+
+                    </p>
+                    <p>Porém, esse resultado é válido para problemas em que:
+                    </p>
+                    <p>1) as restrições são inequações lineares;
+                    </p>
+                    <p>2) a função objetivo é linear.
+                    </p>
+                    <p>Além disso, quando se está lidando com problemas com muitas varáveis ou restrições, a quantidade de vértices pode ser muito grande e, para resolver esses casos, usa-se um método computacional chamado "Simplex". Esse método proporciona
+                        uma busca mais rápida por ser capaz de encontrar os pontos ótimos da função sem precisar percorrer todos os seus vértices.
+                    </p>
+                    <p>Nas atividades 2 e 3, você poderá resolver outros dois problemas empregando a mesma ferramenta da Atividade 1:
+                    </p>
+
+                    <br class="limpador" />
+                    <div class="escolha">
+                        <div class="a_esquerda"><strong>Escolha a próxima atividade</strong></div>
+                        <div class="a_direita"><a href="mapa.html">Ir para o mapa</a></div>
+                        <br class="limpador" />
+                    </div>
+
+                    <div class="atividade">
+                        <div id="pai_atividade2" class="espacador">
+                            <div class="qual">
+                                <div id="atividade2" class="numero_atividade aberta"><a href="atividade2_parte1.html">2</a></div>
+                                <div class="titulo">
+                                    <h1>Um problema de transporte</h1>
+                                </div>
+                            </div>
+                            <br class="limpador" />
+                            <div class="descricao">Uma região ilimitada.</div>
+                            <br class="limpador" />
+                        </div>
+                    </div>
+
+                    <div class="atividade">
+                        <div id="pai_atividade3" class="espacador">
+                            <div class="qual">
+                                <div id="atividade3" class="numero_atividade aberta"><a href="atividade3_parte1.html">3</a></div>
+                                <div class="titulo">
+                                    <h1>Um problema de moradia</h1>
+                                </div>
+                            </div>
+                            <br class="limpador" />
+                            <div class="descricao">Saindo das duas dimensões!</div>
+                            <br class="limpador" />
+                        </div>
+                    </div>
+
+                    <br class="limpador" />
+
+                </div>
+
+
+
+
+
+
+            </div>
+        </div>
+        <br class="limpador" />
+        <div id="rodape">
+            <a href="http://m3.ime.unicamp.br" target="_blank">Sobre o Matemática Multimídia</a>
+        </div>
+    </div>
+    <div id="ferramentas">
+        <a href="javascript:;" onclick="return false;" id="link_notas"><span class="escondido">referencias</span></a>
+        <a href="javascript:;" onclick="return false;" id="link_bloco"><span class="escondido">bloco de notas</span></a>
+        <!--
+        <a href="javascript:;" id="link_calculadora" onclick="javascript:calculadora();"><span class="escondido">calculadora</span></a>
+        <a href="javascript:setActiveStyleSheet('grande');" id="link_acessibilidade"><span class="escondido">acessibilidade</span></a>
+        -->
+    </div>
+    <div id="calc" class="escondido"></div>
+
+</body>
+
+</html>
