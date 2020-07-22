@@ -62,8 +62,6 @@
         .tabelamanual .primeira_linha {
             border-bottom: 1px solid #000000;
         }
-        
-        -->
     </style>
 
     <script type="text/javascript" src="scripts/atividade2_correcao.js"></script>
@@ -250,9 +248,6 @@
         </div>
 
         <script type="text/javascript">
-            var applet = document.ggbApplet;
-
-
             var q1_aresposta = $H({
                 q1_adock01: null,
                 q1_adock02: null
@@ -282,6 +277,7 @@
                 new Draggable(el, {
                     revert: true,
                     onStart: function() {
+                        var applet = document.ggbApplet;
                         q1_ade_onde = $(el).up().id;
                         q1_trocando = false;
 
@@ -302,6 +298,7 @@
                         }
                     },
                     onEnd: function() {
+                        var applet = document.ggbApplet;
                         if (!q1_trocando)
                             q1_aresposta.set(q1_ade_onde, '');
                         $(q1_ade_onde).removeClassName('errado');
@@ -335,7 +332,7 @@
                 Droppables.add(el, {
                     accept: 'resp',
                     onDrop: function(resp, qk, ev) {
-
+                        var applet = document.ggbApplet;
 
                         if (Element.empty(qk) && resp.up().id != 'q1_adispensa')
                             q1_aresposta.set(resp.up().id, null);
@@ -411,6 +408,7 @@
             });
 
             function corrige_drag_q_2_a() {
+                var applet = document.ggbApplet;
                 if (!corrigindo) {
                     var q1_correto = true;
                     var q1_keys = q1_agabarito.keys();
@@ -480,7 +478,6 @@
         </div>
 
         <script type="text/javascript">
-            var applet = document.ggbApplet;
             var aresposta = $H({
                 adock01: null,
                 adock02: null
@@ -500,6 +497,7 @@
                 new Draggable(el, {
                     revert: true,
                     onStart: function() {
+                        var applet = document.ggbApplet;
                         ade_onde = $(el).up().id;
                         trocando = false;
 
@@ -520,6 +518,7 @@
                         }
                     },
                     onEnd: function() {
+                        var applet = document.ggbApplet;
                         if (!trocando)
                             aresposta.set(ade_onde, '');
                         $(ade_onde).removeClassName('errado');
@@ -552,8 +551,7 @@
                 Droppables.add(el, {
                     accept: 'resp',
                     onDrop: function(resp, qk, ev) {
-
-
+                        var applet = document.ggbApplet;
                         if (Element.empty(qk) && resp.up().id != 'adispensa')
                             aresposta.set(resp.up().id, null);
 
@@ -628,6 +626,7 @@
             });
 
             function corrige_drag_q_2_b() {
+                var applet = document.ggbApplet;
                 if (!corrigindo) {
                     var correto = true;
                     var keys = agabarito.keys();
@@ -695,7 +694,6 @@
         </div>
 
         <script type="text/javascript">
-            var applet = document.ggbApplet;
             var q3_aresposta = $H({
                 q3_adock01: null,
                 q3_adock02: null
@@ -715,6 +713,7 @@
                 new Draggable(el, {
                     revert: true,
                     onStart: function() {
+                        var applet = document.ggbApplet;
                         q3_ade_onde = $(el).up().id;
                         q3_trocando = false;
 
@@ -735,6 +734,7 @@
                         }
                     },
                     onEnd: function() {
+                        var applet = document.ggbApplet;
                         if (!q3_trocando)
                             q3_aresposta.set(q3_ade_onde, '');
                         $(q3_ade_onde).removeClassName('errado');
@@ -767,8 +767,7 @@
                 Droppables.add(el, {
                     accept: 'resp',
                     onDrop: function(resp, qk, ev) {
-
-
+                        var applet = document.ggbApplet;
                         if (Element.empty(qk) && resp.up().id != 'q3_adispensa')
                             q3_aresposta.set(resp.up().id, null);
 
@@ -843,6 +842,7 @@
             });
 
             function corrige_drag_q_2_c() {
+                var applet = document.ggbApplet;
                 if (!corrigindo) {
                     var q3_correto = true;
                     var q3_keys = q3_agabarito.keys();

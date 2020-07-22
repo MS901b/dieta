@@ -129,9 +129,9 @@ function ggbOnInit() {
             applet.setVisible("poligono3", true);
             applet.setVisible("poligono5", true);
 
-            // Esconde os desnecessarios
-            applet.setVisible("txtValores", false);
-            applet.setVisible("txtLabels", false);
+            // Tabela de Valores
+            applet.setVisible("txtValores", true);
+            applet.setVisible("txtLabels", true);
             applet.registerObjectUpdateListener("A", "aproximaPontos");
             break;
     }
@@ -690,14 +690,14 @@ function corrige_q_10_b() {
     (Math.abs(b - (-2 / 1.5)).toFixed(5) <= 0.01) ? $('corrige_q10_b_a1').addClassName('correto'): $('corrige_q10_b_a1').addClassName('incorreto');
     (Math.abs(c - 2 / 1.5).toFixed(5) <= 0.01) ? $('corrige_q10_b_a2').addClassName('correto'): $('corrige_q10_b_a2').addClassName('incorreto');
 
-
+    /*
     if (retorno) {
 
         // Objetos auxiliares
         applet.setVisible("txtCustoMovel", true);
         applet.setVisible("custo", true);
         applet.setVisible("t", true);
-    }
+    }*/
 
     return [retorno];
 }
